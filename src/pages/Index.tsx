@@ -17,7 +17,7 @@ const Index = () => {
       currentIndex = (currentIndex + 1) % texts.length;
       setCurrentText(texts[currentIndex]);
       setKey(prev => prev + 1);
-    }, 3000);
+    }, 4500); // Aumentado para dar tempo da animação completa
 
     return () => clearInterval(interval);
   }, []);
@@ -287,11 +287,20 @@ const Index = () => {
         }
 
         @keyframes typewriter {
-          from {
+          0% {
             width: 0;
           }
-          to {
+          100% {
             width: 100%;
+          }
+        }
+
+        @keyframes fadeout {
+          0%, 80% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
           }
         }
 
@@ -302,8 +311,10 @@ const Index = () => {
           width: 0;
           white-space: nowrap;
           border-right: 2px solid;
-          animation: typewriter 1.5s steps(20, end) forwards,
-                    blink 0.75s step-end infinite;
+          animation: 
+            typewriter 2s steps(20, end) forwards,
+            blink 0.75s step-end infinite,
+            fadeout 4s forwards;
         }
 
         @keyframes blink {
