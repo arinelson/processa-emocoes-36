@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -124,9 +125,12 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-8" id="processa-content">
         <header className="text-center mb-12">
-          <h1 className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-400 to-pink-400' : 'from-purple-600 to-pink-600'} mb-4`}>
-            PROCESSA: O Ato de Gerenciar Suas Emoções
+          <h1 className={`text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-400 to-pink-400' : 'from-purple-600 to-pink-600'} mb-2`}>
+            PROCESSA
           </h1>
+          <h2 className={`text-2xl md:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'} mb-4`}>
+            O Ato de Gerenciar Suas Emoções
+          </h2>
           <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Por Kyara Santos</p>
           <div className="relative w-full max-w-3xl mx-auto mb-12">
             <div className={`absolute inset-0 rounded-lg blur-md ${isDark ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30' : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20'}`}></div>
