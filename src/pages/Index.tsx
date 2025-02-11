@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,6 +8,7 @@ import { Moon, Sun } from "lucide-react";
 
 const Index = () => {
   const [currentText, setCurrentText] = useState("SUAS EMOÇÕES");
+  const [key, setKey] = useState(0); // Adicionando key para forçar re-render da animação
   const texts = ["SUAS EMOÇÕES", "SUAS ESCOLHAS", "SUA VIDA", "SEU CONTROLE"];
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const Index = () => {
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % texts.length;
       setCurrentText(texts[currentIndex]);
+      setKey(prev => prev + 1); // Incrementa a key para reiniciar a animação
     }, 3000);
 
     return () => clearInterval(interval);
@@ -143,7 +146,10 @@ const Index = () => {
           <h2 className={`text-2xl md:text-3xl font-semibold mb-4`}>
             <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>O Ato de Gerenciar </span>
             <span className="inline-block relative w-[200px]">
-              <span className={`animate-typewriter overflow-hidden whitespace-nowrap ${isDark ? 'text-purple-300' : 'text-purple-600'}`}>
+              <span 
+                key={key} 
+                className={`animate-typewriter overflow-hidden whitespace-nowrap ${isDark ? 'text-purple-300' : 'text-purple-600'}`}
+              >
                 {currentText}
               </span>
             </span>
@@ -282,11 +288,14 @@ const Index = () => {
         }
 
         .animate-typewriter {
+          display: inline-block;
+          overflow: hidden;
           position: relative;
           width: 0;
           border-right: 2px solid;
-          animation: typewriter 1s steps(20, end) forwards,
+          animation: typewriter 1.5s steps(20, end) forwards,
                     blink 0.75s step-end infinite;
+          white-space: nowrap;
         }
 
         @keyframes blink {
