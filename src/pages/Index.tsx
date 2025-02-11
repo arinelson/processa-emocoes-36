@@ -128,10 +128,10 @@ const Index = () => {
           <h1 className={`text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-400 to-pink-400' : 'from-purple-600 to-pink-600'} mb-2`}>
             PROCESSA
           </h1>
-          <h2 className={`text-2xl md:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'} mb-4`}>
-            <span>O Ato de Gerenciar </span>
+          <h2 className={`text-2xl md:text-3xl font-semibold mb-4`}>
+            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>O Ato de Gerenciar </span>
             <span className="inline-block relative">
-              <span className="animate-typewriter overflow-hidden whitespace-nowrap">
+              <span className={`animate-typewriter overflow-hidden whitespace-nowrap ${isDark ? 'text-purple-300' : 'text-purple-600'}`}>
                 SUAS EMOÇÕES
               </span>
             </span>
