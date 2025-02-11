@@ -86,7 +86,7 @@ const Index = () => {
     <div className={`min-h-screen transition-colors duration-300 ${
       isDark 
         ? 'bg-gray-900' 
-        : 'bg-gradient-to-br from-[#F2FCE2] to-[#D3E4FD]'
+        : 'bg-gradient-to-br from-[#E5DEFF] to-[#FDE1D3]'
     }`}>
       <Button
         onClick={() => setIsDark(!isDark)}
@@ -121,7 +121,7 @@ const Index = () => {
             <div
               key={index}
               className={`backdrop-blur-sm rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${
-                isDark ? 'bg-gray-800/80 text-white' : 'bg-white/90'
+                isDark ? 'bg-gray-800/80 text-white' : 'bg-white/80'
               }`}
               style={{
                 animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`,
