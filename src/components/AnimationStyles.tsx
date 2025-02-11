@@ -66,5 +66,11 @@ export const AnimationStyles = () => (
         border-color: currentColor;
       }
     }
+
+    @media (max-width: 640px) {
+      .animate-typewriter {
+        font-size: 0.95rem;
+      }
+    }
   `}</style>
 );
