@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,6 +6,19 @@ import html2canvas from "html2canvas";
 import { Moon, Sun } from "lucide-react";
 
 const Index = () => {
+  const [currentText, setCurrentText] = useState("SUAS EMOÇÕES");
+  const texts = ["SUAS EMOÇÕES", "SUAS ESCOLHAS", "SUA VIDA", "SEU CONTROLE"];
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % texts.length;
+      setCurrentText(texts[currentIndex]);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [reflections, setReflections] = useState<{ [key: string]: string }>({});
   const [isDark, setIsDark] = useState(false);
   const [selectedEmotions, setSelectedEmotions] = useState<string[]>([]);
@@ -130,9 +142,9 @@ const Index = () => {
           </h1>
           <h2 className={`text-2xl md:text-3xl font-semibold mb-4`}>
             <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>O Ato de Gerenciar </span>
-            <span className="inline-block relative">
+            <span className="inline-block relative w-[200px]">
               <span className={`animate-typewriter overflow-hidden whitespace-nowrap ${isDark ? 'text-purple-300' : 'text-purple-600'}`}>
-                SUAS EMOÇÕES
+                {currentText}
               </span>
             </span>
           </h2>
@@ -261,31 +273,10 @@ const Index = () => {
         }
 
         @keyframes typewriter {
-          0%, 20% {
+          from {
             width: 0;
           }
-          10%, 15% {
-            width: 100%;
-          }
-          30%, 35% {
-            width: 0;
-            content: "SUAS ESCOLHAS";
-          }
-          45%, 50% {
-            width: 100%;
-          }
-          60%, 65% {
-            width: 0;
-            content: "SUA VIDA";
-          }
-          75%, 80% {
-            width: 100%;
-          }
-          90%, 95% {
-            width: 0;
-            content: "SEU CONTROLE";
-          }
-          100% {
+          to {
             width: 100%;
           }
         }
@@ -294,7 +285,7 @@ const Index = () => {
           position: relative;
           width: 0;
           border-right: 2px solid;
-          animation: typewriter 12s steps(20, end) infinite,
+          animation: typewriter 1s steps(20, end) forwards,
                     blink 0.75s step-end infinite;
         }
 
@@ -305,14 +296,6 @@ const Index = () => {
           50% {
             border-color: currentColor;
           }
-        }
-
-        .animate-typewriter::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-right: 2px solid;
-          animation: blink 0.75s step-end infinite;
         }
       `}</style>
     </div>
