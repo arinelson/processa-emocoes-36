@@ -109,7 +109,7 @@ const Index = () => {
             PROCESSA
           </h1>
           <AnimatedTitle isDark={isDark} />
-          <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Por Kyara Santos</p>
+          <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Para Kyara Santos da Silva Rocha</p>
           <div className="relative w-full max-w-3xl mx-auto mb-12">
             <div className={`absolute inset-0 rounded-lg blur-md ${isDark ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30' : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20'}`}></div>
             <img
