@@ -89,7 +89,7 @@ const Index = () => {
           </h1>
           <p className="text-xl text-gray-600 mb-8">Por Kyara Santos</p>
           <img
-            src="/lovable-uploads/952b46cb-c210-45fd-8834-81f2626944d3.png"
+            src="/lovable-uploads/52375afd-7206-498b-b304-e923239e96ad.png"
             alt="Gerenciando Emoções Intensas"
             className="mx-auto max-w-full h-auto rounded-lg shadow-lg mb-12"
           />
