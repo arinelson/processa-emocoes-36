@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +7,7 @@ import { Moon, Sun } from "lucide-react";
 
 const Index = () => {
   const [currentText, setCurrentText] = useState("SUAS EMOÇÕES");
-  const [key, setKey] = useState(0); // Adicionando key para forçar re-render da animação
+  const [key, setKey] = useState(0);
   const texts = ["SUAS EMOÇÕES", "SUAS ESCOLHAS", "SUA VIDA", "SEU CONTROLE"];
 
   useEffect(() => {
@@ -16,7 +15,7 @@ const Index = () => {
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % texts.length;
       setCurrentText(texts[currentIndex]);
-      setKey(prev => prev + 1); // Incrementa a key para reiniciar a animação
+      setKey(prev => prev + 1);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -143,15 +142,15 @@ const Index = () => {
           <h1 className={`text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-400 to-pink-400' : 'from-purple-600 to-pink-600'} mb-2`}>
             PROCESSA
           </h1>
-          <h2 className={`text-2xl md:text-3xl font-semibold mb-4`}>
-            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>O Ato de Gerenciar </span>
-            <span className="inline-block relative w-[200px]">
-              <span 
-                key={key} 
-                className={`animate-typewriter overflow-hidden whitespace-nowrap ${isDark ? 'text-purple-300' : 'text-purple-600'}`}
-              >
-                {currentText}
-              </span>
+          <h2 className={`text-2xl md:text-3xl font-semibold mb-4 flex items-center justify-center gap-2`}>
+            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>
+              O Ato de Gerenciar
+            </span>
+            <span 
+              key={key} 
+              className={`animate-typewriter overflow-hidden whitespace-nowrap inline-flex ${isDark ? 'text-purple-300' : 'text-purple-600'}`}
+            >
+              {currentText}
             </span>
           </h2>
           <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Por Kyara Santos</p>
@@ -288,14 +287,11 @@ const Index = () => {
         }
 
         .animate-typewriter {
-          display: inline-block;
-          overflow: hidden;
           position: relative;
           width: 0;
           border-right: 2px solid;
           animation: typewriter 1.5s steps(20, end) forwards,
                     blink 0.75s step-end infinite;
-          white-space: nowrap;
         }
 
         @keyframes blink {
