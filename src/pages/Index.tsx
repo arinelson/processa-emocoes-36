@@ -110,11 +110,11 @@ const Index = () => {
             >
               <div className="flex items-center gap-6 mb-6">
                 <span
-                  className={`w-16 h-16 flex items-center justify-center rounded-full text-white font-bold text-2xl bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 shadow-lg transform transition-transform duration-300 hover:scale-110`}
+                  className="w-16 h-16 flex items-center justify-center rounded-full text-white font-bold text-2xl shadow-lg transform transition-transform duration-300 hover:scale-110 bg-gradient-to-r from-pink-500 to-pink-600 animate-glow"
                 >
                   {step.letter}
                 </span>
-                <h2 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-gray-900">
+                <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
                   {step.title}
                 </h2>
               </div>
@@ -132,7 +132,7 @@ const Index = () => {
         <div className="text-center mt-16">
           <Button
             onClick={handleDownload}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-purple-700 to-pink-700"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-purple-700 hover:to-pink-700"
           >
             Baixar Minha Reflexão
           </Button>
@@ -149,6 +149,22 @@ const Index = () => {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+
+        @keyframes glow {
+          0% {
+            box-shadow: 0 0 5px #D946EF, 0 0 10px #D946EF, 0 0 15px #D946EF;
+          }
+          50% {
+            box-shadow: 0 0 10px #D946EF, 0 0 20px #D946EF, 0 0 30px #D946EF;
+          }
+          100% {
+            box-shadow: 0 0 5px #D946EF, 0 0 10px #D946EF, 0 0 15px #D946EF;
+          }
+        }
+
+        .animate-glow {
+          animation: glow 2s ease-in-out infinite;
         }
       `}</style>
     </div>
