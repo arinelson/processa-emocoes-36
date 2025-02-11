@@ -129,7 +129,15 @@ const Index = () => {
             PROCESSA
           </h1>
           <h2 className={`text-2xl md:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'} mb-4`}>
-            O Ato de Gerenciar Suas Emoções
+            <span>O Ato de Gerenciar </span>
+            <span className="inline-block h-[1.5em] overflow-hidden relative">
+              <span className="animate-slideWords absolute top-0 left-0">
+                SUAS EMOÇÕES<br/>
+                SUAS ESCOLHAS<br/>
+                SUA VIDA<br/>
+                SEU CONTROLE
+              </span>
+            </span>
           </h2>
           <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Por Kyara Santos</p>
           <div className="relative w-full max-w-3xl mx-auto mb-12">
@@ -253,6 +261,28 @@ const Index = () => {
 
         .animate-glow {
           animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes slideWords {
+          0%, 20% {
+            transform: translateY(0%);
+          }
+          25%, 45% {
+            transform: translateY(-25%);
+          }
+          50%, 70% {
+            transform: translateY(-50%);
+          }
+          75%, 95% {
+            transform: translateY(-75%);
+          }
+          100% {
+            transform: translateY(-100%);
+          }
+        }
+
+        .animate-slideWords {
+          animation: slideWords 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
       `}</style>
     </div>
