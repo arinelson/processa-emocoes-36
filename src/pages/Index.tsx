@@ -130,12 +130,9 @@ const Index = () => {
           </h1>
           <h2 className={`text-2xl md:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'} mb-4`}>
             <span>O Ato de Gerenciar </span>
-            <span className="inline-block h-[1.5em] overflow-hidden relative">
-              <span className="animate-slideWords absolute top-0 left-0">
-                SUAS EMOÇÕES<br/>
-                SUAS ESCOLHAS<br/>
-                SUA VIDA<br/>
-                SEU CONTROLE
+            <span className="inline-block relative">
+              <span className="animate-typewriter overflow-hidden whitespace-nowrap">
+                SUAS EMOÇÕES
               </span>
             </span>
           </h2>
@@ -263,26 +260,59 @@ const Index = () => {
           animation: glow 2s ease-in-out infinite;
         }
 
-        @keyframes slideWords {
+        @keyframes typewriter {
           0%, 20% {
-            transform: translateY(0%);
+            width: 0;
           }
-          25%, 45% {
-            transform: translateY(-25%);
+          10%, 15% {
+            width: 100%;
           }
-          50%, 70% {
-            transform: translateY(-50%);
+          30%, 35% {
+            width: 0;
+            content: "SUAS ESCOLHAS";
           }
-          75%, 95% {
-            transform: translateY(-75%);
+          45%, 50% {
+            width: 100%;
+          }
+          60%, 65% {
+            width: 0;
+            content: "SUA VIDA";
+          }
+          75%, 80% {
+            width: 100%;
+          }
+          90%, 95% {
+            width: 0;
+            content: "SEU CONTROLE";
           }
           100% {
-            transform: translateY(-100%);
+            width: 100%;
           }
         }
 
-        .animate-slideWords {
-          animation: slideWords 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        .animate-typewriter {
+          position: relative;
+          width: 0;
+          border-right: 2px solid;
+          animation: typewriter 12s steps(20, end) infinite,
+                    blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink {
+          from, to {
+            border-color: transparent;
+          }
+          50% {
+            border-color: currentColor;
+          }
+        }
+
+        .animate-typewriter::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-right: 2px solid;
+          animation: blink 0.75s step-end infinite;
         }
       `}</style>
     </div>
