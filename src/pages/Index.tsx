@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -82,7 +83,11 @@ const Index = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900' : 'bg-gradient-to-br from-gray-50 to-purple-50'}`}>
+    <div className={`min-h-screen transition-colors duration-300 ${
+      isDark 
+        ? 'bg-gray-900' 
+        : 'bg-gradient-to-br from-[#F2FCE2] to-[#D3E4FD]'
+    }`}>
       <Button
         onClick={() => setIsDark(!isDark)}
         className="fixed top-4 right-4 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300"
@@ -116,7 +121,7 @@ const Index = () => {
             <div
               key={index}
               className={`backdrop-blur-sm rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${
-                isDark ? 'bg-gray-800/80 text-white' : 'bg-white/80'
+                isDark ? 'bg-gray-800/80 text-white' : 'bg-white/90'
               }`}
               style={{
                 animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`,
