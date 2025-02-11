@@ -132,14 +132,14 @@ const Index = () => {
         <div className="text-center mt-16">
           <Button
             onClick={handleDownload}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-purple-700 hover:to-pink-700"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-purple-700 to-pink-700"
           >
             Baixar Minha Reflexão
           </Button>
         </div>
       </div>
 
-      <style jsx global>{`
+      <style>{`
         @keyframes fadeIn {
           from {
             opacity: 0;
