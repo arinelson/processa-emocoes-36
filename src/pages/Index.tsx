@@ -81,38 +81,47 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50">
       <div className="container mx-auto px-4 py-8" id="processa-content">
         <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-purple-600 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-4">
             PROCESSA: O Ato de Gerenciar Suas Emoções
           </h1>
           <p className="text-xl text-gray-600 mb-8">Por Kyara Santos</p>
-          <img
-            src="/lovable-uploads/52375afd-7206-498b-b304-e923239e96ad.png"
-            alt="Gerenciando Emoções Intensas"
-            className="mx-auto max-w-full h-auto rounded-lg shadow-lg mb-12"
-          />
+          <div className="relative w-full max-w-3xl mx-auto mb-12">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg blur-md"></div>
+            <img
+              src="/lovable-uploads/52375afd-7206-498b-b304-e923239e96ad.png"
+              alt="Gerenciando Emoções Intensas"
+              className="relative rounded-lg shadow-2xl w-full h-auto object-cover transform transition-transform duration-700 hover:scale-[1.01]"
+            />
+          </div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-[1.02]"
+              className="backdrop-blur-sm bg-white/80 rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]"
+              style={{
+                animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`,
+                opacity: 0,
+              }}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-6 mb-6">
                 <span
-                  className={`w-12 h-12 flex items-center justify-center rounded-full text-white font-bold text-xl bg-${step.color}-600`}
+                  className={`w-16 h-16 flex items-center justify-center rounded-full text-white font-bold text-2xl bg-gradient-to-br from-${step.color}-500 to-${step.color}-600 shadow-lg transform transition-transform duration-300 hover:scale-110`}
                 >
                   {step.letter}
                 </span>
-                <h2 className="text-xl font-semibold text-gray-800">{step.title}</h2>
+                <h2 className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-gray-900">
+                  {step.title}
+                </h2>
               </div>
-              <p className="text-gray-600 mb-4">{step.description}</p>
+              <p className="text-gray-600 mb-6 text-lg">{step.description}</p>
               <Textarea
                 placeholder={step.placeholder}
-                className="w-full min-h-[120px] p-3 border rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full min-h-[120px] p-4 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-300"
                 value={reflections[step.title] || ""}
                 onChange={(e) => setReflections({ ...reflections, [step.title]: e.target.value })}
               />
@@ -120,15 +129,28 @@ const Index = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Button
             onClick={handleDownload}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-transform duration-300 hover:scale-105"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-purple-700 hover:to-pink-700"
           >
             Baixar Minha Reflexão
           </Button>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };
