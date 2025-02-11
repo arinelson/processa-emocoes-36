@@ -23,17 +23,17 @@ export const AnimatedTitle = ({ isDark }: AnimatedTitleProps) => {
 
   return (
     <h2 className={`text-2xl md:text-3xl font-semibold mb-4 flex flex-col items-center`}>
-      <div className="flex items-center gap-2">
-        <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>
+      <div className="flex items-center justify-center gap-2">
+        <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'} whitespace-nowrap`}>
           O Ato de Gerenciar
         </span>
-        <div className="relative h-[36px] flex items-center">
+        <div className="relative h-[36px] flex items-center justify-start min-w-[150px]">
           <span 
             key={key} 
-            className={`animate-typewriter ${isDark ? 'text-purple-300' : 'text-purple-600'}`}
+            className={`animate-typewriter ${isDark ? 'text-purple-300' : 'text-purple-600'} absolute left-0`}
             style={{
-              minWidth: currentText === "SUA VIDA" ? "90px" : 
-                      currentText === "SEU CONTROLE" ? "140px" : "150px"
+              width: currentText === "SUA VIDA" ? "90px" : 
+                    currentText === "SEU CONTROLE" ? "140px" : "150px"
             }}
           >
             {currentText}

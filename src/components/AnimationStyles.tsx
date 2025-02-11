@@ -50,7 +50,6 @@ export const AnimationStyles = () => (
       overflow: hidden;
       display: inline-block;
       position: relative;
-      width: 0;
       white-space: nowrap;
       border-right: 2px solid;
       animation: 
