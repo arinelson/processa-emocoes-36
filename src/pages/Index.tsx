@@ -22,56 +22,48 @@ const Index = () => {
       title: "Parar e Refletir",
       description: "Dê uma pausa e reconheça que uma emoção forte está presente.",
       placeholder: "O que estou sentindo agora?",
-      color: "purple",
     },
     {
       letter: "R",
       title: "Registrar Emoções",
       description: "Anote suas emoções para ganhar clareza sobre elas.",
       placeholder: "Quais emoções estou experimentando?",
-      color: "pink",
     },
     {
       letter: "O",
       title: "Observar Emoções",
       description: "Analise o que está acontecendo sem julgamento.",
       placeholder: "De onde vem essa emoção?",
-      color: "blue",
     },
     {
       letter: "C",
       title: "Consolidar os Motivos",
       description: "Identifique os gatilhos que causaram a emoção.",
       placeholder: "Por que estou me sentindo assim?",
-      color: "violet",
     },
     {
       letter: "E",
       title: "Elencar os Motivos que Posso Controlar",
       description: "Separe os aspectos da situação que estão sob seu controle.",
       placeholder: "O que, nesta situação, eu posso controlar ou influenciar?",
-      color: "indigo",
     },
     {
       letter: "S",
       title: "Soltar o que Não Posso Controlar",
       description: "Aceite o que está fora do seu controle e libere a preocupação com isso.",
       placeholder: "O que está fora do meu controle e preciso deixar ir?",
-      color: "purple",
     },
     {
       letter: "S",
       title: "Selecionar Prioridade",
       description: "Defina o próximo passo mais importante com base no que foi identificado.",
       placeholder: "Qual é a ação mais importante a tomar agora?",
-      color: "blue",
     },
     {
       letter: "A",
       title: "Agir com Propósito",
       description: "Tome uma atitude intencional, alinhada com seus valores.",
       placeholder: "Como posso agir de forma construtiva e intencional nesta situação?",
-      color: "teal",
     },
   ];
 
@@ -132,9 +124,11 @@ const Index = () => {
               }}
             >
               <div className="flex items-center gap-6 mb-6">
-                <span className="w-16 h-16 flex items-center justify-center rounded-full text-white font-bold text-2xl shadow-lg transform transition-transform duration-300 hover:scale-110 bg-gradient-to-r from-pink-500 to-pink-600 animate-glow">
-                  {step.letter}
-                </span>
+                <div className="relative flex-shrink-0">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 flex items-center justify-center transform transition-transform duration-300 hover:scale-110 animate-glow">
+                    <span className="text-white font-bold text-2xl">{step.letter}</span>
+                  </div>
+                </div>
                 <h2 className={`text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r ${
                   isDark ? 'from-purple-300 to-purple-500' : 'from-purple-400 to-purple-600'
                 }`}>
