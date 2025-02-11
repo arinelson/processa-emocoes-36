@@ -1,11 +1,20 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import html2canvas from "html2canvas";
+import { Moon, Sun } from "lucide-react";
 
 const Index = () => {
   const [reflections, setReflections] = useState<{ [key: string]: string }>({});
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDark]);
 
   const steps = [
     {
@@ -81,15 +90,27 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50">
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900' : 'bg-gradient-to-br from-gray-50 to-purple-50'}`}>
+      <Button
+        onClick={() => setIsDark(!isDark)}
+        className="fixed top-4 right-4 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300"
+        variant="outline"
+      >
+        {isDark ? (
+          <Sun className="h-6 w-6 text-yellow-500" />
+        ) : (
+          <Moon className="h-6 w-6 text-purple-600" />
+        )}
+      </Button>
+
       <div className="container mx-auto px-4 py-8" id="processa-content">
         <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-4">
+          <h1 className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-400 to-pink-400' : 'from-purple-600 to-pink-600'} mb-4`}>
             PROCESSA: O Ato de Gerenciar Suas Emoções
           </h1>
-          <p className="text-xl text-gray-600 mb-8">Por Kyara Santos</p>
+          <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Por Kyara Santos</p>
           <div className="relative w-full max-w-3xl mx-auto mb-12">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg blur-md"></div>
+            <div className={`absolute inset-0 rounded-lg blur-md ${isDark ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30' : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20'}`}></div>
             <img
               src="/lovable-uploads/52375afd-7206-498b-b304-e923239e96ad.png"
               alt="Gerenciando Emoções Intensas"
@@ -102,26 +123,34 @@ const Index = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="backdrop-blur-sm bg-white/80 rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]"
+              className={`backdrop-blur-sm rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${
+                isDark ? 'bg-gray-800/80 text-white' : 'bg-white/80'
+              }`}
               style={{
                 animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`,
                 opacity: 0,
               }}
             >
               <div className="flex items-center gap-6 mb-6">
-                <span
-                  className="w-16 h-16 flex items-center justify-center rounded-full text-white font-bold text-2xl shadow-lg transform transition-transform duration-300 hover:scale-110 bg-gradient-to-r from-pink-500 to-pink-600 animate-glow"
-                >
+                <span className="w-16 h-16 flex items-center justify-center rounded-full text-white font-bold text-2xl shadow-lg transform transition-transform duration-300 hover:scale-110 bg-gradient-to-r from-pink-500 to-pink-600 animate-glow">
                   {step.letter}
                 </span>
-                <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+                <h2 className={`text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r ${
+                  isDark ? 'from-purple-300 to-purple-500' : 'from-purple-400 to-purple-600'
+                }`}>
                   {step.title}
                 </h2>
               </div>
-              <p className="text-gray-600 mb-6 text-lg">{step.description}</p>
+              <p className={`mb-6 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                {step.description}
+              </p>
               <Textarea
                 placeholder={step.placeholder}
-                className="w-full min-h-[120px] p-4 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-300"
+                className={`w-full min-h-[120px] p-4 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 ${
+                  isDark 
+                    ? 'bg-gray-700/50 text-white placeholder-gray-400 border-gray-600' 
+                    : 'bg-white/50 text-gray-900 placeholder-gray-500 border-gray-200'
+                }`}
                 value={reflections[step.title] || ""}
                 onChange={(e) => setReflections({ ...reflections, [step.title]: e.target.value })}
               />
@@ -132,7 +161,11 @@ const Index = () => {
         <div className="text-center mt-16">
           <Button
             onClick={handleDownload}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:from-purple-700 hover:to-pink-700"
+            className={`px-10 py-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 ${
+              isDark
+                ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600'
+                : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700'
+            } text-white`}
           >
             Baixar Minha Reflexão
           </Button>
