@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -142,16 +143,24 @@ const Index = () => {
           <h1 className={`text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-400 to-pink-400' : 'from-purple-600 to-pink-600'} mb-2`}>
             PROCESSA
           </h1>
-          <h2 className={`text-2xl md:text-3xl font-semibold mb-4 flex items-center justify-center gap-2`}>
-            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>
-              O Ato de Gerenciar
-            </span>
-            <span 
-              key={key} 
-              className={`animate-typewriter overflow-hidden whitespace-nowrap inline-flex ${isDark ? 'text-purple-300' : 'text-purple-600'}`}
-            >
-              {currentText}
-            </span>
+          <h2 className={`text-2xl md:text-3xl font-semibold mb-4 flex flex-col items-center`}>
+            <div className="flex items-center gap-2">
+              <span className={`bg-clip-text text-transparent bg-gradient-to-r ${isDark ? 'from-purple-300 to-pink-300' : 'from-purple-500 to-pink-500'}`}>
+                O Ato de Gerenciar
+              </span>
+              <div className="relative h-[36px] flex items-center">
+                <span 
+                  key={key} 
+                  className={`animate-typewriter ${isDark ? 'text-purple-300' : 'text-purple-600'}`}
+                  style={{
+                    minWidth: currentText === "SUA VIDA" ? "90px" : 
+                            currentText === "SEU CONTROLE" ? "140px" : "150px"
+                  }}
+                >
+                  {currentText}
+                </span>
+              </div>
+            </div>
           </h2>
           <p className={`text-xl mb-8 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Por Kyara Santos</p>
           <div className="relative w-full max-w-3xl mx-auto mb-12">
@@ -287,8 +296,11 @@ const Index = () => {
         }
 
         .animate-typewriter {
+          overflow: hidden;
+          display: inline-block;
           position: relative;
           width: 0;
+          white-space: nowrap;
           border-right: 2px solid;
           animation: typewriter 1.5s steps(20, end) forwards,
                     blink 0.75s step-end infinite;
